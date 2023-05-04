@@ -20,6 +20,9 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    -- View treesitter highlight groups
+    ["<leader>k"] = { ":TSHighlightCapturesUnderCursor<cr>", desc = "View Highlight Group" },
+    ["F3"] = { ":Vista!!" },
   },
   t = {
     -- setting a mapping to false will disable it
