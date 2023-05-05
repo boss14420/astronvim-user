@@ -1,7 +1,6 @@
 -- https://github.com/datamonsterr/astronvim_config/blob/main/plugins/nvim-dapui.lua
 return {
   "rcarriga/nvim-dap-ui",
-  after = "nvim-dap",
   config = function()
     local dap, dapui = require "dap", require "dapui"
     dapui.setup {

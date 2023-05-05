@@ -6,12 +6,18 @@ return {
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        "clangd",
-        "omnisharp",
+      local inserter = require("astronvim.utils").list_insert_unique
+      opts.ensure_installed = inserter(opts.ensure_installed, {
         "pylsp",
-        "jdtls"
       })
+
+      if require('jit').arch == 'x64' then
+        opts.ensure_installed = inserter(opts.ensure_installed, {
+          "clangd",
+          "omnisharp",
+          "jdtls"
+        })
+      end
     end,
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -31,11 +37,17 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+      local inserter = require("astronvim.utils").list_insert_unique
+      opts.ensure_installed = inserter(opts.ensure_installed, {
         "debugpy",
-        "cppdbg",
-        "codeclr"
       })
+
+      if require('jit').arch == 'x64' then
+        opts.ensure_installed = inserter(opts.ensure_installed, {
+          "cppdbg",
+          "codeclr"
+        })
+      end
     end,
   },
 }
