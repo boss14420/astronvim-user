@@ -23,9 +23,32 @@ return {
     -- View treesitter highlight groups
     ["<leader>k"] = { ":TSHighlightCapturesUnderCursor<cr>", desc = "View Highlight Group" },
     ["F3"] = { ":Vista!!" },
+    -- treesj
+    ["<leader>jt"] = {
+      function() require('treesj').toggle({split = {recursive = true}}) end,
+    },
+    ["<leader>js"] = {
+      function() require('treesj').split({split = {recursive = true}}) end,
+    },
+    ["<leader>jj"] = {
+      function() require('treesj').join({split = {recursive = true,}}) end,
+    },
+    -- move lines
+    ["sj"] = { ":m .+1<CR>==", desc = "Move line down", remap = false},
+    ["sk"] = { ":m .-2<CR>==", desc = "Move line up", remap = false},
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+  },
+  i = {
+    -- move lines
+    ["<C-j>"] = { "<ESC>:m .+1<CR>==gi", desc = "Move line down", remap = false},
+    ["<C-k>"] = { "<ESC>:m .-2<CR>==gi", desc = "Move line up", remap = false},
+  },
+  v = {
+    -- move lines
+    ["sj"] = { ":m '>+1<CR>gv=gv", desc = "Move line down", remap = false},
+    ["sk"] = { ":m '<-2<CR>gv=gv", desc = "Move line up", remap = false},
   },
 }

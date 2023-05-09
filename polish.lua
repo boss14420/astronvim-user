@@ -33,11 +33,10 @@ return function()
         vim.opt.showtabline = new_showtabline
       end
     end,
-    
-    -- Prettify LSP logs:
-    require('vim.lsp.log').set_format_func(vim.inspect);
-
   })
+
+  -- Prettify LSP logs:
+  require('vim.lsp.log').set_format_func(vim.inspect);
 
   -- compile C/C++
   local env = vim.env
