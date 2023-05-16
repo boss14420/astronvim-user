@@ -16,7 +16,20 @@ return {
 
   {
     "mfussenegger/nvim-dap-python",
-    dependencies = {"nvim-dap"}
+    dependencies = {"nvim-dap"},
+    ft = "py",
+    config = function()
+      require("dap-python").setup{}
+    end,
+  },
+
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    dependencies = {"nvim-dap"},
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+    cmd = "DapInstall",
   },
 
   {
@@ -27,14 +40,6 @@ return {
   {
     "hrsh7th/cmp-nvim-lua",
     dependencies = {"cmp_luasnip"}
-  },
-
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    dependencies = {"nvim-dap"},
-    config = function()
-      require("nvim-dap-virtual-text").setup()
-    end,
   },
 
   {
@@ -78,5 +83,16 @@ return {
 
   {
     'mfussenegger/nvim-jdtls',
+  },
+
+  {
+    's1n7ax/nvim-window-picker',
+    tag = 'v1.*',
+    config = function()
+      require'window-picker'.setup({
+        -- the foreground (text) color of the picker
+        fg_color = '#cd12dc',
+      })
+    end,
   }
 }

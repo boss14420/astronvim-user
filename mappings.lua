@@ -36,6 +36,20 @@ return {
     -- move lines
     ["sj"] = { ":m .+1<CR>==", desc = "Move line down", remap = false},
     ["sk"] = { ":m .-2<CR>==", desc = "Move line up", remap = false},
+    -- telescope dap
+    ["<leader>dm"] = { require'telescope'.extensions.dap.commands, desc = "List commands", remap = false },
+    ["<leader>de"] = { require'telescope'.extensions.dap.configurations, desc = "List configurations", remap = false },
+    ["<leader>dk"] = { require'telescope'.extensions.dap.list_breakpoints, desc = "List breakpoints", remap = false },
+    ["<leader>dv"] = { require'telescope'.extensions.dap.variables, desc = "List variables", remap = false },
+    ["<leader>df"] = { require'telescope'.extensions.dap.frames, desc = "List frames", remap = false },
+    -- window picker
+    ["<C-w>p"] = {
+      function()
+        local picked_window_id = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
+        vim.api.nvim_set_current_win(picked_window_id)
+      end,
+      desc = "Pick a window"
+    }
   },
   t = {
     -- setting a mapping to false will disable it

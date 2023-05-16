@@ -2,7 +2,16 @@ return {
   "mfussenegger/nvim-dap",
   module = "dap",
   after = "lua-json5",
-  dependencies = {"lua-json5"},
+  dependencies = {
+    "lua-json5",
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      -- dependencies = {"nvim-dap"},
+      config = function()
+        require("nvim-dap-virtual-text").setup()
+      end,
+    },
+  },
   config = function()
     local dap = require('dap')
 
