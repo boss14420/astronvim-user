@@ -25,13 +25,28 @@ return {
     ["F3"] = { ":Vista!!" },
     -- treesj
     ["<leader>jt"] = {
-      function() require('treesj').toggle({split = {recursive = true}}) end,
+      function() require('treesj').toggle({split = {recursive = false}}) end,
+      desc = "Toggle tree split"
     },
     ["<leader>js"] = {
-      function() require('treesj').split({split = {recursive = true}}) end,
+      function() require('treesj').split({split = {recursive = false}}) end,
+      desc = "Tree split"
     },
     ["<leader>jj"] = {
+      function() require('treesj').join({split = {recursive = false,}}) end,
+      desc = "Tree join"
+    },
+    ["<leader>jT"] = {
+      function() require('treesj').toggle({split = {recursive = true}}) end,
+      desc = "Toggle tree split (recursive)"
+    },
+    ["<leader>jS"] = {
+      function() require('treesj').split({split = {recursive = true}}) end,
+      desc = "Tree split (recursive)"
+    },
+    ["<leader>jJ"] = {
       function() require('treesj').join({split = {recursive = true,}}) end,
+      desc = "Tree join (recursive)"
     },
     -- move lines
     ["sj"] = { ":m .+1<CR>==", desc = "Move line down", remap = false},
