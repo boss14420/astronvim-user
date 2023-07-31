@@ -57,6 +57,8 @@ return {
     ["<leader>dk"] = { require'telescope'.extensions.dap.list_breakpoints, desc = "List breakpoints", remap = false },
     ["<leader>dv"] = { require'telescope'.extensions.dap.variables, desc = "List variables", remap = false },
     ["<leader>df"] = { require'telescope'.extensions.dap.frames, desc = "List frames", remap = false },
+    -- telescope media file
+    ["<leader>fi"] = { require('telescope').extensions.media_files.media_files, desc = "List media files", remap = false },
     -- window picker
     ["<C-w>p"] = {
       function()

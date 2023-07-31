@@ -105,5 +105,83 @@ return {
         fg_color = '#cd12dc',
       })
     end,
-  }
+  },
+
+  {
+    'nvim-telescope/telescope-media-files.nvim',
+    module = "telescope._extensions.media_files",
+    config = function()
+      require'telescope'.setup {
+        extensions = {
+          media_files = {
+            -- filetypes whitelist
+            -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+            filetypes = {"png", "jpg", "mp4", "webm", "pdf"},
+            -- find command (defaults to `fd`)
+            find_cmd = "rg"
+          }
+        },
+        require('telescope').load_extension('media_files')
+      }
+    end,
+    dependencies = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    lazy = false,
+  },
+
+  {
+    'samodostal/image.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'm00qek/baleia.nvim',
+        tags = 'v*',
+      }
+    },
+    -- ft = { "jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff" },
+    lazy = false,
+    config = function()
+      require('image').setup {
+        render = {
+          min_padding = 5,
+          show_label = true,
+          use_dither = true,
+          foreground_color = true,
+          background_color = true
+        },
+        events = {
+          update_on_nvim_resize = true,
+        },
+      }
+    end
+  },
+
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "VeryLazy"
+  },
+
+  {
+    "f-person/git-blame.nvim",
+    event = "VeryLazy"
+  },
+
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        -- api_key_cmd = "bash -c \"bw get item openaiapirc | jq -r '.fields | map( { (.name|tostring): . }) | add | .secret_key.value'\""
+        api_key_cmd = "bash -c \"cat ~/.config/openaiapirc | grep secret_key | awk '{print $3}'\""
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
 }
