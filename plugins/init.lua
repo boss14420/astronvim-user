@@ -64,6 +64,35 @@ return {
   { "derekwyatt/vim-fswitch", ft = { "c", "cpp", "cc", "h", "hh", "hpp" }},
   { "tikhomirov/vim-glsl", ft = "glsl" },
 
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      -- This module contains a number of default definitions
+      local rainbow_delimiters = require 'rainbow-delimiters'
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          vim = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+      }
+    end,
+    lazy = false,
+  },
+
   -- tokyonight colorscheme
   {
     "folke/tokyonight.nvim",
