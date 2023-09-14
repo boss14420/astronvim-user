@@ -17,9 +17,12 @@ return {
 
     if require('jit').arch == 'x64' then
       require('dap.ext.vscode').json_decode = require'json5'.parse
-      require('dap.ext.vscode').load_launchjs(nil, {coreclr = {'cs'}})
+      require('dap.ext.vscode').load_launchjs(nil, {
+        coreclr = {'cs'},
+        cppdbg = {'c', 'cpp'}
+      })
 
-      dap.configurations.cpp = {
+      table.insert(dap.configurations.cpp,
         {
           name = "Launch file",
           type = "cppdbg",
@@ -36,7 +39,10 @@ return {
               ignoreFailures = false
             }
           },
-        },
+        }
+      )
+
+      table.insert(dap.configurations.cpp,
         {
           name = 'Attach to gdbserver :1234',
           type = 'cppdbg',
@@ -48,8 +54,8 @@ return {
           program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
           end,
-        },
-      }
+        }
+      )
     end
   end
 }
