@@ -66,7 +66,47 @@ return {
         vim.api.nvim_set_current_win(picked_window_id)
       end,
       desc = "Pick a window"
-    }
+    },
+    ["gv"] = {
+      -- # Go to definition (in a split)
+      function()
+        vim.lsp.buf.definition({
+          on_list = function(options)
+            -- if there are multiple items, warn the user
+            if #options.items > 1 then
+              vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
+            end
+
+            -- Open the first item in a vertical split
+            local item = options.items[1]
+            local cmd = "vsplit +" .. item.lnum .. " " .. item.filename .. "|" .. "normal " .. item.col
+
+            vim.cmd(cmd)
+          end,
+        })
+      end,
+      desc = "Go to definition in vertical split window"
+    },
+    ["gs"] = {
+      -- # Go to definition (in a split)
+      function()
+        vim.lsp.buf.definition({
+          on_list = function(options)
+            -- if there are multiple items, warn the user
+            if #options.items > 1 then
+              vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
+            end
+
+            -- Open the first item in a vertical split
+            local item = options.items[1]
+            local cmd = "split +" .. item.lnum .. " " .. item.filename .. "|" .. "normal " .. item.col
+
+            vim.cmd(cmd)
+          end,
+        })
+      end,
+      desc = "Go to definition in horizontal split window"
+    },
   },
   t = {
     -- setting a mapping to false will disable it
