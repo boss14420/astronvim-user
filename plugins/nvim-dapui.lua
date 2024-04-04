@@ -17,16 +17,16 @@ return {
         {
           elements = {
             { id = "watches", size = 0.5 },
-            { id = "scopes", size = 0.5 },
-            { id = "breakpoints", size = 0.25 },
+            { id = "scopes", size = 0.75 },
+            { id = "breakpoints", size = 0.10 },
             { id = "stacks", size = 0.25 },
           },
-          size = 40,
+          size = 80,
           position = "left",
         },
         {
           elements = { "repl", "console" },
-          size = 10,
+          size = 20,
           position = "bottom",
         },
       },
