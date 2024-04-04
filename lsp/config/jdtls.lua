@@ -1,7 +1,7 @@
 return function()
   -- use this function notation to build some variables
-  -- local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-  -- local root_dir = require("jdtls.setup").find_root(root_markers)
+  local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+  local root_dir = require("jdtls.setup").find_root(root_markers)
 
   -- calculate workspace dir
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -13,13 +13,15 @@ return function()
 
   -- get the current OS
   local os
-  if vim.fn.has "macunix" then
+  if vim.fn.has("macunix") ~= 0 then
     os = "mac"
-  elseif vim.fn.has "win32" then
+  elseif vim.fn.has("win32") ~= 0 then
     os = "win"
   else
     os = "linux"
   end
+
+  print("calculate os = " .. vim.inspect(os))
 
   -- return the server config
   return {
@@ -41,9 +43,10 @@ return function()
       vim.fn.glob(install_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
       "-configuration",
       install_path .. "/config_" .. os,
+      -- "/home/thanhnd/.local/share/nvim/mason/packages/jdtls/jdtls",
       "-data",
       workspace_dir,
     },
-    -- root_dir = root_dir,
+    root_dir = root_dir,
   }
 end
