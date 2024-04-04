@@ -29,13 +29,14 @@ return {
     config = function()
       require("nvim-dap-virtual-text").setup({
         display_callback = function(variable, _buf, _stackframe, _node)
-          local maxlen = 40
+          local maxlen = 48
           if #variable.value <= maxlen then
-            return variable.name .. ' = ' .. variable.value
+            -- return variable.name .. ' = ' .. variable.value
+            return ' = ' .. variable.value
           else
             local first = variable.value:sub(1, maxlen / 2 - 2)
             local last = variable.value:sub(-(maxlen / 2 - 2))
-            return variable.name .. ' = ' .. first .. " .. " .. last
+            return ' = ' .. first .. " .. " .. last
           end
         end,
       })
