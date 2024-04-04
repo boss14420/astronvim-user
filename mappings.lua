@@ -51,6 +51,9 @@ return {
     -- move lines
     ["sj"] = { ":m .+1<CR>==", desc = "Move line down", remap = false},
     ["sk"] = { ":m .-2<CR>==", desc = "Move line up", remap = false},
+    -- dap stack up down
+    ["<leader>dd"] = { require'dap'.down, desc = "Down stacktrace", remap = false },
+    ["<leader>d-"] = { require'dap'.up, desc = "Up stacktrace", remap = false },
     -- telescope dap
     ["<leader>dm"] = { require'telescope'.extensions.dap.commands, desc = "List commands", remap = false },
     ["<leader>de"] = { require'telescope'.extensions.dap.configurations, desc = "List configurations", remap = false },
