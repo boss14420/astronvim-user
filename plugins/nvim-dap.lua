@@ -15,6 +15,11 @@ return {
     --   handler = {},
     -- })
 
+    require('dap.ext.vscode').type_to_filetypes = {
+      coreclr = {'cs'},
+      cppdbg = {'c', 'cpp'},
+    }
+
     if require('jit').arch == 'x64' then
       require('dap.ext.vscode').json_decode = require'json5'.parse
       require('dap.ext.vscode').load_launchjs(nil, {
