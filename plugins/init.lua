@@ -7,7 +7,7 @@ return {
     end,
   },
 
-  { "lvimuser/lsp-inlayhints.nvim", config = true },
+  -- { "lvimuser/lsp-inlayhints.nvim", config = true },
 
   {
     "Joakker/lua-json5",
