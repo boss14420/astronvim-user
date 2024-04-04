@@ -230,4 +230,20 @@ return {
       "nvim-telescope/telescope.nvim"
     }
   },
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git",
+    dependencies = {
+      {
+        -- bitbucket
+        "tommcdo/vim-fubitive",
+        cmd = "GBrowse",
+      },
+      {
+        -- github
+        "tpope/vim-rhubarb",
+        cmd = "GBrowse"
+      }
+    }
+  }
 }
