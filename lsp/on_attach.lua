@@ -8,6 +8,7 @@ return function(client, bufnr)
     --   vim.keymap.set("n", "<leader>uH", function() inlayhints.toggle() end, { desc = "Toggle inlay hints" })
     -- end
     -- require("astronvim.utils.ui").toggle_buffer_inlay_hints(bufnr)
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    -- vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, {})
   end
 end
