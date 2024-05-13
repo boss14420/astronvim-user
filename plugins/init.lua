@@ -245,5 +245,6 @@ return {
         cmd = "GBrowse"
       }
     }
-  }
+  },
+  { "nvim-neotest/nvim-nio" },
 }
