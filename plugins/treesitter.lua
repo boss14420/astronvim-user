@@ -28,7 +28,11 @@ return {
         enable = true,
       },
       autotag = { enable = true },
-      context_commentstring = { enable = true, enable_autocmd = false },
+    }
+
+    require('ts_context_commentstring').setup {
+      enable_autocmd = true,
+      enable = true,
     }
   end,
   dependencies = {
