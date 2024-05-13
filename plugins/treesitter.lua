@@ -3,7 +3,7 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup {
       ensure_installed = {
-        "lua", "c", "cpp", "c_sharp", "python", "java", "glsl"
+        "lua", "c", "cpp", "c_sharp", "python", "java", "glsl", "json5",
       },
       highlight = {
         enable = true,

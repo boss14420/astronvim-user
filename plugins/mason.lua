@@ -15,7 +15,9 @@ return {
         opts.ensure_installed = inserter(opts.ensure_installed, {
           "clangd",
           "omnisharp",
-          "jdtls"
+          "jdtls",
+          "lua_ls",
+          "jsonls"
         })
       end
     end,
